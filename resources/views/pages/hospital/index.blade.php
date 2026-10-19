@@ -2028,12 +2028,8 @@ combinedPanelDiv.innerHTML = `
             </select>
             <label>Facility Level:</label>
             ${[
-                { alias: 'Level 6', value: '6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)' },
-                { alias: 'Level 5', value: '5 - Provincial Hospital, Health Services and Public Health Programs (PHA)' },
-                { alias: 'Level 4', value: '4 - District Hospital - Rural Health Services (DH)' },
-                { alias: 'Level 3', value: '3 - Health Center / Urban Clinic (HC-UC)' },
-                { alias: 'Level 2', value: '2 - Community Health Post (CHP)' },
-                { alias: 'Level 1', value: '1 - Village Health Post (VHP)' }
+                { alias: 'Hospital', value: 'Hospital' },
+                { alias: 'Clinic / Health Center', value: 'Clinic / Health Center' }
             ].map(c => `
             <label style="display:block;font-size:13px;margin-bottom:5px;">
                 <input type="checkbox" name="hospitalLevel" value="${c.value}">
