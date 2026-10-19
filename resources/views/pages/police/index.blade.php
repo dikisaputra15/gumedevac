@@ -1349,9 +1349,7 @@ combinedPanelDiv.innerHTML = `
             <label>Category:</label>
             ${[
                 'National Police HQ',
-                'Divisional Command',
-                'Provincial Police Command (PPC)',
-                'District Police Command / Police Station',
+                'Police Precint',
             ].map(c => `
             <label style="display:block;font-size:13px;margin-bottom:5px;">
                 <input type="checkbox" name="policeCategory" value="${c}">
