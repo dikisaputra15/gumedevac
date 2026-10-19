@@ -163,8 +163,19 @@ class MasterairportController extends Controller
     {
         $airport = Airport::findOrFail($id);
         $category = !empty($airport->category) ? explode(', ', $airport->category) : [];
-        $public_facilities = !empty($airport->public_facilities) ? explode(', ', $airport->public_facilities) : [];
-        $public_transportation = !empty($airport->public_transportation) ? explode(', ', $airport->public_transportation) : [];
+        $parseList = function ($value) {
+            if (empty($value)) {
+                return [];
+            }
+            // Data lama tersimpan sebagai JSON array, data baru sebagai "a, b, c"
+            $decoded = json_decode($value, true);
+            if (is_array($decoded)) {
+                return $decoded;
+            }
+            return array_map('trim', explode(',', $value));
+        };
+        $public_facilities = $parseList($airport->public_facilities);
+        $public_transportation = $parseList($airport->public_transportation);
         $provinces = Provincesregion::all();
         return view('pages.master.editairport', [
             'airport' => $airport,
@@ -183,6 +194,8 @@ class MasterairportController extends Controller
         // Cari data airport berdasarkan ID
         $airport = Airport::findOrFail($id);
         $category = !empty($request->category) ? implode(', ', $request->category) : '';
+        $public_facilities = !empty($request->public_facilities) ? implode(', ', $request->public_facilities) : '';
+        $public_transportation = !empty($request->public_transportation) ? implode(', ', $request->public_transportation) : '';
 
         // Update data
         $data = [
@@ -211,8 +224,8 @@ class MasterairportController extends Controller
             'aviation_fuel_depot' => $request->input('aviation_fuel_depot'),
             'supplies_eqipment' => $request->input('supplies_eqipment'),
             'internet_services' => $request->input('internet_services'),
-            'public_facilities' => $request->input('public_facilities'),
-            'public_transportation' => $request->input('public_transportation'),
+            'public_facilities' => $public_facilities,
+            'public_transportation' => $public_transportation,
             'note' => $request->input('note'),
             'nearest_accommodation' => $request->input('nearest_accommodation'),
             'other_flight_information' => $request->input('other_flight_information'),

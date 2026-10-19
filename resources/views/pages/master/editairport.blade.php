@@ -664,7 +664,7 @@
                     <label class="form-check-label">Airport shuttle</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name=public_transportation[]" value="Airport bus" {{ in_array('Airport bus', $public_transportation) ? 'checked' : '' }}>
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Airport bus" {{ in_array('Airport bus', $public_transportation) ? 'checked' : '' }}>
                     <label class="form-check-label">Airport bus</label>
                 </div>
                  <div class="form-check">
