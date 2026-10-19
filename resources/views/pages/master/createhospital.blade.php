@@ -42,13 +42,13 @@
          <div class="col-md-12">
             <div class="form-group">
                 <label>Latitude</label>
-                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', 13.4443) }}">
+                <input type="text" class="form-control" name="latitude">
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label>Longitude</label>
-                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', 144.7937) }}">
+                <input type="text" class="form-control" name="longitude">
             </div>
         </div>
 
@@ -56,17 +56,11 @@
             <div class="form-group">
                 <label>Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="Guam Memorial Hospital Authority (GMHA)">
-                        Guam Memorial Hospital Authority (GMHA)
-                    </option>
                     <option value="Guam Regional Medical City (GRMC)">
                         Guam Regional Medical City (GRMC)
                     </option>
-                    <option value="U.S. Naval Hospital Guam">
-                        U.S. Naval Hospital Guam
-                    </option>
-                    <option value="Clinic Health Center">
-                        Clinic Health Center
+                    <option value="Guam Memorial Hospital (GMH)">
+                        Guam Memorial Hospital (GMH)
                     </option>
                 </select>
             </div>
@@ -101,10 +95,8 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Icon</label>
-                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24; height:24;"> Guam Memorial Hospital Authority (GMHA)
-                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24; height:24;"> Guam Regional Medical City (GRMC)
-                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:24; height:24;"> LU.S. Naval Hospital Guam
-                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24; height:24;"> Clinic Health Center
+                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24; height:24;"> Guam Regional Medical City (GRMC)
+                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24; height:24;"> Guam Memorial Hospital (GMH)
             </div>
         </div>
 

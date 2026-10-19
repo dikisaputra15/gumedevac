@@ -52,14 +52,14 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Latitude</label>
-                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', $airport->latitude ?? 13.4443) }}">
+                <input type="text" class="form-control" name="latitude" value="{{ $airport->latitude; }}">
             </div>
         </div>
 
          <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Longitude</label>
-                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', $airport->longitude ?? 144.7937) }}">
+                <input type="text" class="form-control" name="longitude" value="{{ $airport->longitude; }}">
             </div>
         </div>
 
@@ -111,6 +111,7 @@
                         ['url' => 'https://pg.concordreview.com/wp-content/uploads/2024/10/military-airport-red.png', 'label' => 'Military'],
                         ['url' => 'https://pg.concordreview.com/wp-content/uploads/2024/10/civil-military-airport.png', 'label' => 'Combined (Civil - Military)'],
                         ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/private-airport.png', 'label' => 'Private'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/11/helipad-removebg.png', 'label' => 'Helipad'],
                     ];
                 @endphp
 

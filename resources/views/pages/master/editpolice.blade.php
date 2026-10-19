@@ -45,14 +45,14 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Latitude</label>
-                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', $police->latitude ?? 13.4443) }}">
+                <input type="text" class="form-control" name="latitude" value="{{ $police->latitude }}">
             </div>
         </div>
 
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Longitude</label>
-                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', $police->longitude ?? 144.7937) }}">
+                <input type="text" class="form-control" name="longitude" value="{{ $police->longitude }}">
             </div>
         </div>
 
