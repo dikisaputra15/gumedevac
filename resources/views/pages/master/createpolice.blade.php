@@ -21,9 +21,9 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Provinces, Region</label>
+                <label>Village</label>
                 <select class="form-control" name="province_id">
-                        <option value="0">-Choosse Provinces Region-</option>
+                        <option value="0">-Choosse Village-</option>
                     @foreach($provinces as $prov)
                         <option value="{{$prov->id}}">{{$prov->provinces_region}}</option>
                     @endforeach
@@ -34,14 +34,14 @@
          <div class="col-md-12">
             <div class="form-group">
                 <label>Latitude</label>
-                <input type="text" class="form-control" name="latitude">
+                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', 13.4443) }}">
             </div>
         </div>
 
         <div class="col-md-12">
             <div class="form-group">
                 <label>Longitude</label>
-                <input type="text" class="form-control" name="longitude">
+                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', 144.7937) }}">
             </div>
         </div>
 
@@ -91,22 +91,11 @@
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="Divisional Command" data-icon="{{ asset('images/Layer2.png') }}">
+                    <input class="form-check-input category-radio" type="radio" name="category" value="Police Precint" data-icon="{{ asset('images/Layer2.png') }}">
                     <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">Divisional Command</label>
+                    <label class="form-check-label">Police Precint</label>
                 </div>
 
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="Provincial Police Command (PPC)" data-icon="{{ asset('images/Layer3.png') }}">
-                    <img src="{{ asset('images/Layer3.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">Provincial Police Command (PPC)</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="District Police Command / Police Station" data-icon="{{ asset('images/Layer4.png') }}">
-                    <img src="{{ asset('images/Layer4.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">District Police Command / Police Station</label>
-                </div>
             </div>
         </div>
 

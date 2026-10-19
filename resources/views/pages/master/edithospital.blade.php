@@ -29,7 +29,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label>Provinces, Region</label>
+                <label>Village</label>
                 <select class="form-control" name="province_id">
                     <?php
                         foreach ($provinces as $prov) {
@@ -52,13 +52,13 @@
          <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Latitude</label>
-                <input type="text" class="form-control" name="latitude" value="{{ $hospital->latitude; }}">
+                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', $hospital->latitude ?? 13.4443) }}">
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Longitude</label>
-                <input type="text" class="form-control" name="longitude" value="{{ $hospital->longitude; }}">
+                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', $hospital->longitude ?? 144.7937) }}">
             </div>
         </div>
 
@@ -66,23 +66,17 @@
             <div class="form-group">
                 <label>Edit Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="1 - Village Health Post (VHP)" {{ old('facility_level', $hospital->facility_level ?? '') == '1 - Village Health Post (VHP)' ? 'selected' : '' }}>
-                        1 - Village Health Post (VHP)
+                    <option value="Guam Memorial Hospital Authority (GMHA)" {{ old('facility_level', $hospital->facility_level ?? '') == 'Guam Memorial Hospital Authority (GMHA)' ? 'selected' : '' }}>
+                        Guam Memorial Hospital Authority (GMHA)
                     </option>
-                    <option value="2 - Community Health Post (CHP)" {{ old('facility_level', $hospital->facility_level ?? '') == '2 - Community Health Post (CHP)' ? 'selected' : '' }}>
-                        2 - Community Health Post (CHP)
+                    <option value="Guam Regional Medical City (GRMC)" {{ old('facility_level', $hospital->facility_level ?? '') == 'Guam Regional Medical City (GRMC)' ? 'selected' : '' }}>
+                        Guam Regional Medical City (GRMC)
                     </option>
-                    <option value="3 - Health Center / Urban Clinic (HC-UC)" {{ old('facility_level', $hospital->facility_level ?? '') == '3 - Health Center / Urban Clinic (HC-UC)' ? 'selected' : '' }}>
-                        3 - Health Center / Urban Clinic (HC-UC)
+                    <option value="U.S. Naval Hospital Guam" {{ old('facility_level', $hospital->facility_level ?? '') == 'U.S. Naval Hospital Guam' ? 'selected' : '' }}>
+                        U.S. Naval Hospital Guam
                     </option>
-                    <option value="4 - District Hospital - Rural Health Services (DH)" {{ old('facility_level', $hospital->facility_level ?? '') == '4 - District Hospital - Rural Health Services (DH)' ? 'selected' : '' }}>
-                        4 - District Hospital - Rural Health Services (DH)
-                    </option>
-                    <option value="5 - Provincial Hospital, Health Services and Public Health Programs (PHA)" {{ old('facility_level', $hospital->facility_level ?? '') == '5 - Provincial Hospital, Health Services and Public Health Programs (PHA)' ? 'selected' : '' }}>
-                        5 - Provincial Hospital, Health Services and Public Health Programs (PHA)
-                    </option>
-                    <option value="6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)" {{ old('facility_level', $hospital->facility_level ?? '') == '6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)' ? 'selected' : '' }}>
-                        6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)
+                    <option value="Clinic Health Center" {{ old('facility_level', $hospital->facility_level ?? '') == 'Clinic Health Center' ? 'selected' : '' }}>
+                        Clinic Health Center
                     </option>
                 </select>
             </div>
@@ -124,12 +118,12 @@
 
                 @php
                     $icons = [
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Level 1'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Level 2'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png', 'label' => 'Level 3'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png', 'label' => 'Level 4'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png', 'label' => 'Level 5'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png', 'label' => 'Level 6'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Guam Memorial Hospital Authority (GMHA)'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Guam Regional Medical City (GRMC)'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png', 'label' => 'U.S. Naval Hospital Guam'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png', 'label' => 'Clinic Health Center'],
+                    ];
+                @endphp
                     ];
                 @endphp
 

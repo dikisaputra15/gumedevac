@@ -20,8 +20,8 @@ class AirportFactory extends Factory
             'province_id' => $this->faker->numberBetween(1, 22),
             'airport_name' => $this->faker->city . ' International Airport',
             'address' => $this->faker->address,
-            'latitude' => $this->faker->latitude(-11.0, -1.0), // Papua New Guinea
-            'longitude' => $this->faker->longitude(140.0, 155.0),
+            'latitude' => 13.4443, // Guam
+            'longitude' => 144.7937,
             'telephone' => $this->faker->phoneNumber,
             'fax' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,

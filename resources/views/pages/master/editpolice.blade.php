@@ -45,14 +45,14 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Latitude</label>
-                <input type="text" class="form-control" name="latitude" value="{{$police->latitude}}">
+                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', $police->latitude ?? 13.4443) }}">
             </div>
         </div>
 
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Longitude</label>
-                <input type="text" class="form-control" name="longitude" value="{{$police->longitude}}">
+                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', $police->longitude ?? 144.7937) }}">
             </div>
         </div>
 
@@ -109,37 +109,15 @@
                     <label>National Police HQ</label>
                 </div>
 
-                <div class="form-check form-check-inline police-option {{ $police->category == 'Divisional Command' ? 'selected' : '' }}">
+                <div class="form-check form-check-inline police-option {{ $police->category == 'Police Precint' ? 'selected' : '' }}">
                     <input class="form-check-input category-radio"
                         type="radio"
                         name="category"
-                        value="Divisional Command"
+                        value="Police Precint"
                         data-icon="{{ asset('images/Layer2.png') }}"
-                        {{ $police->category == 'Divisional Command' ? 'checked' : '' }}>
+                        {{ $police->category == 'Police Precint' ? 'checked' : '' }}>
                     <img src="{{ asset('images/Layer2.png') }}" width="16">
-                    <label>Divisional Command</label>
-                </div>
-
-                <div class="form-check form-check-inline police-option {{ $police->category == 'Provincial Police Command (PPC)' ? 'selected' : '' }}">
-                    <input class="form-check-input category-radio"
-                        type="radio"
-                        name="category"
-                        value="Provincial Police Command (PPC)"
-                        data-icon="{{ asset('images/Layer3.png') }}"
-                        {{ $police->category == 'Provincial Police Command (PPC)' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/Layer3.png') }}" width="16">
-                    <label>Provincial Police Command (PPC)</label>
-                </div>
-
-                 <div class="form-check form-check-inline police-option {{ $police->category == 'District Police Command / Police Station' ? 'selected' : '' }}">
-                    <input class="form-check-input category-radio"
-                        type="radio"
-                        name="category"
-                        value="District Police Command / Police Station"
-                        data-icon="{{ asset('images/Layer4.png') }}"
-                        {{ $police->category == 'District Police Command / Police Station' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/Layer4.png') }}" width="16">
-                    <label>District Police Command / Police Station</label>
+                    <label>Police Precint</label>
                 </div>
             </div>
         </div>

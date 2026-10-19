@@ -1,5 +1,5 @@
 /*!
- * 
+ *
  * Super simple WYSIWYG editor v0.8.20
  * https://summernote.org
  *
@@ -124,8 +124,8 @@ var __webpack_exports__ = {};
         foreground: 'Tekstin väri',
         transparent: 'Läpinäkyvä',
         setTransparent: 'Aseta läpinäkyväksi',
-        reset: 'Palauta',
-        resetToDefault: 'Palauta oletusarvoksi'
+        reset: 'Guamta',
+        resetToDefault: 'Guamta oletusarvoksi'
       },
       shortcut: {
         shortcuts: 'Pikanäppäimet',

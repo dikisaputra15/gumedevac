@@ -21,9 +21,9 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Provinces, Region</label>
+                <label>Village</label>
                 <select class="form-control" name="province_id">
-                        <option value="0">-Choosse Provinces Region-</option>
+                        <option value="0">-Choosse Village-</option>
                     @foreach($provinces as $prov)
                         <option value="{{$prov->id}}">{{$prov->provinces_region}}</option>
                     @endforeach
@@ -41,14 +41,14 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Latitude</label>
-                <input type="text" class="form-control" name="latitude">
+                <input type="text" class="form-control" name="latitude" value="{{ old('latitude', 13.4443) }}">
             </div>
         </div>
 
          <div class="col-md-12">
             <div class="form-group">
                 <label>Longitude</label>
-                <input type="text" class="form-control" name="longitude">
+                <input type="text" class="form-control" name="longitude" value="{{ old('longitude', 144.7937) }}">
             </div>
         </div>
 

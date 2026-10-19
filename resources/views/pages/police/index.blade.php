@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Police')
-@section('page-title', 'Papua New Guinea Police')
+@section('page-title', 'Guam Police')
 
 @push('styles')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -657,8 +657,8 @@
 <script>
 // === Inisialisasi Peta ===
 const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -6.80188562253168, lng: 144.0733101155011 },
-    zoom: 5,
+    center: { lat: 13.4443, lng: 144.7937 },
+    zoom: 10,
     mapTypeId: 'roadmap',
     mapTypeControl: true,
     fullscreenControl: true,
@@ -1188,7 +1188,7 @@ function addPoliceMarkers(data) {
             <h5>${itemName}</h5>
             <strong>Address:</strong>
                 ${police.location || 'N/A'}
-                ${police.province_name || 'N/A'}, Papua New Guinea<br>
+                ${police.province_name || 'N/A'}, Guam<br>
             <strong>Phone:</strong> ${police.telephone || 'N/A'}<br>
             <strong>Website:</strong> ${police.website || 'N/A'}<br>
         `;

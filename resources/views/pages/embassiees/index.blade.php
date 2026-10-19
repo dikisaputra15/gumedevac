@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title','Embassiees')
-@section('page-title', 'Papua New Guinea Embassiees')
+@section('page-title', 'Guam Embassiees')
 
 @push('styles')
 
@@ -309,8 +309,8 @@
 <script>
 // === Inisialisasi Peta ===
 const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -6.80188562253168, lng: 144.0733101155011 },
-    zoom: 6,
+    center: { lat: 13.4443, lng: 144.7937 },
+    zoom: 10,
     mapTypeId: 'roadmap',
     mapTypeControl: true,
     fullscreenControl: true,
@@ -834,7 +834,7 @@ function addEmbassyMarkers(data) {
 
         const popupContent = `
             <h5 style="border-bottom:1px solid #cccccc;">${itemName}</h5>
-            <strong>Address:</strong> ${embassy.location || 'N/A'}<br>
+            <strong>Address:</strong> ${embassy.location || 'N/A'}, Territory (Government of Guam)<br>
             <strong>Telephone:</strong> ${embassy.telephone || 'N/A'}<br>
             <strong>Website:</strong> ${embassy.website || 'N/A'}<br>
         `;
