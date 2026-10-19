@@ -77,6 +77,8 @@ class MasterairportController extends Controller
         $airport = new Airport();
 
         $category = !empty($request->category) ? implode(', ', $request->category) : '';
+        $public_facilities = !empty($request->public_facilities) ? implode(', ', $request->public_facilities) : '';
+        $public_transportation = !empty($request->public_transportation) ? implode(', ', $request->public_transportation) : '';
 
          if ($request->hasFile('image')) {
             $extension = $request->file('image')->getClientOriginalExtension();
@@ -95,11 +97,12 @@ class MasterairportController extends Controller
         $airport->address = $request->input('address');
         $airport->latitude = $request->input('latitude');
         $airport->longitude = $request->input('longitude');
-        $airport->telephone = $request->input('telephone');
+         $airport->telephone = $request->input('telephone');
         $airport->fax = $request->input('fax');
         $airport->email = $request->input('email');
         $airport->website = $request->input('website');
         $airport->category = $category;
+        $airport->military_branch = $request->input('military_branch');
         $airport->iata_code = $request->input('iata_code');
         $airport->icao_code = $request->input('icao_code');
         $airport->hrs_of_operation = $request->input('hrs_of_operation');
@@ -115,8 +118,8 @@ class MasterairportController extends Controller
         $airport->aviation_fuel_depot = $request->input('aviation_fuel_depot');
         $airport->supplies_eqipment = $request->input('supplies_eqipment');
         $airport->internet_services = $request->input('internet_services');
-        $airport->public_facilities = $request->input('public_facilities');
-        $airport->public_transportation = $request->input('public_transportation');
+        $airport->public_facilities = $public_facilities;
+        $airport->public_transportation = $public_transportation;
         $airport->note = $request->input('note');
         $airport->nearest_accommodation = $request->input('nearest_accommodation');
         $airport->other_flight_information = $request->input('other_flight_information');
@@ -160,10 +163,14 @@ class MasterairportController extends Controller
     {
         $airport = Airport::findOrFail($id);
         $category = !empty($airport->category) ? explode(', ', $airport->category) : [];
+        $public_facilities = !empty($airport->public_facilities) ? explode(', ', $airport->public_facilities) : [];
+        $public_transportation = !empty($airport->public_transportation) ? explode(', ', $airport->public_transportation) : [];
         $provinces = Provincesregion::all();
         return view('pages.master.editairport', [
             'airport' => $airport,
             'category' => $category,
+            'public_facilities' => $public_facilities,
+            'public_transportation' => $public_transportation,
             'provinces' => $provinces
         ]);
     }

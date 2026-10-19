@@ -66,11 +66,11 @@
             <div class="form-group">
                 <label>Edit Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="Guam Regional Medical City (GRMC)" {{ old('facility_level', $hospital->facility_level ?? '') == 'Guam Regional Medical City (GRMC)' ? 'selected' : '' }}>
-                         Guam Regional Medical City (GRMC)
+                    <option value="Hospital" {{ old('facility_level', $hospital->facility_level ?? '') == 'Hospital' ? 'selected' : '' }}>
+                         Hospital
                     </option>
-                    <option value="Guam Memorial Hospital (GMH)" {{ old('facility_level', $hospital->facility_level ?? '') == 'Guam Memorial Hospital (GMH)' ? 'selected' : '' }}>
-                         Guam Memorial Hospital (GMH)
+                    <option value="Clinic / Health Center" {{ old('facility_level', $hospital->facility_level ?? '') == 'Clinic / Health Center' ? 'selected' : '' }}>
+                         Clinic / Health Center
                     </option>
                 </select>
             </div>
@@ -112,8 +112,8 @@
 
                 @php
                     $icons = [
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Guam Regional Medical City (GRMC)'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Guam Memorial Hospital (GMH)'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Hospital'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Clinic / Health Center'],
                     ];
                 @endphp
 
