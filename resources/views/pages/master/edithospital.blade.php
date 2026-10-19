@@ -116,8 +116,6 @@
                         ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Guam Memorial Hospital (GMH)'],
                     ];
                 @endphp
-                    ];
-                @endphp
 
                 @foreach($icons as $icon)
                     <label style="margin-right: 15px;">
