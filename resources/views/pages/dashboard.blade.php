@@ -288,119 +288,83 @@
         cursor: pointer;
     }
 
-    .legend-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0;
-        width: 100%;
-        align-items: start;
-    }
-
-    .legend-grid-item {
+    .dashboard-legend-sidebar.dashboard-classifications {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 6px;
-        width: 100%;
-        min-height: 32px;
-        text-align: left;
-        white-space: nowrap;
+        flex-direction: column;
+        gap: 8px;
+        background: #fff;
     }
-
-    .legend-grid-item img {
-        width: 12px;
-        height: 12px;
-        object-fit: contain;
-        flex-shrink: 0;
+    .dashboard-classification-group {
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
     }
-
-    .legend-grid-item small { text-align: left; }
-
-    .airfield-legend-column {
-        flex: 0 0 auto;
-        margin: 0;
+    .dashboard-classification-group > .class-header,
+    .dashboard-classification-group > div > .class-medical-classification {
+      margin-bottom: 8px;
+      padding: 0;
+      line-height: 20px;
+      text-align: left;
     }
-
-    .airfield-legend-list {
-        min-width: max-content;
-        padding: 0;
+    .dashboard-classifications .airport-list {
+      align-items: flex-start;
+      padding: 0;
     }
-
-    .airfield-legend-list .class-header {
-        white-space: nowrap;
+    .dashboard-classifications .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      min-height: 30px;
+      padding: 3px 0 !important;
+      white-space: nowrap;
+      text-align: left;
     }
-
-    .airfield-legend-grid {
-        grid-template-columns: repeat(3, max-content);
-        column-gap: 12px;
-        row-gap: 0;
-        width: max-content;
+    .dashboard-classifications .btn small {
+      font-size: 12px;
+      line-height: 18px;
     }
-
-    .airfield-legend-grid .legend-grid-item {
-        width: auto;
+    .dashboard-classifications .btn img {
+      flex-shrink: 0;
+      object-fit: contain;
     }
-
-    .medical-legend-groups {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+    .dashboard-medical-levels {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      gap: 0;
     }
-
-    .medical-legend-group {
-        flex: 1;
-        align-items: flex-start;
-        text-align: left;
+    .dashboard-medical-levels .class-column:not(:last-child) > div {
+      padding-right: 16px;
     }
-
-    .medical-legend-items {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 10px;
+    .dashboard-medical-levels .class-header {
+      margin-bottom: 4px;
+      padding-top: 0;
+      padding-bottom: 5px;
+      padding-left: 0;
+      line-height: 20px;
     }
-
-    .medical-legend-items .legend-grid-item {
-        width: auto;
-        padding-left: 0 !important;
-    }
-
-    .medical-legend-items .legend-grid-item img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .police-legend-grid {
-        grid-template-columns: repeat(2, max-content);
-        column-gap: 20px;
-        row-gap: 0;
-        width: max-content;
-    }
-
-    .police-legend-grid .legend-grid-item {
-        width: auto;
-        white-space: nowrap;
-        line-height: 1.15;
-    }
-
-    .police-legend-list {
-        padding: 0;
-        min-width: max-content;
-    }
-
-    .classification-toolbar {
-        display: flex;
-        width: 100%;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 24px;
-    }
-
-    .medical-legend-column,
-    .police-legend-column {
-        flex: 0 0 auto;
-        margin: 0 !important;
-    }
+    .dashboard-legend-panel { width: 100%; border: 1px solid #d6dee8; border-radius: 9px; background: #fff; color: #19334e; overflow: hidden; }
+    .dashboard-legend-panel summary,
+    .dashboard-legend-disclaimer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px; font-size: 13px; font-weight: 700; cursor: pointer; list-style: none; }
+    .dashboard-legend-disclaimer { min-height: 50px; text-align: left; font-family: inherit; }
+    .dashboard-legend-panel summary::-webkit-details-marker { display: none; }
+    .dashboard-legend-panel summary:hover,
+    .dashboard-legend-disclaimer:hover { background: #f5f8fb; }
+    .dashboard-legend-panel summary:focus-visible,
+    .dashboard-legend-disclaimer:focus-visible { outline: 2px solid #346abb; outline-offset: -3px; }
+    .legend-toggle { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid #bbc7d5; border-radius: 50%; flex-shrink: 0; }
+    .legend-toggle::before { content: '+'; font-size: 17px; font-weight: 400; }
+    .dashboard-legend-panel[open] .legend-toggle::before { content: '\00d7'; }
+    .dashboard-legend-panel[open] summary { border-bottom: 1px solid #d6dee8; }
+    .dashboard-legend-panel .dashboard-classification-group { padding: 12px; overflow: visible; }
+    .dashboard-legend-panel .class-header { font-size: 12px; text-align: left; }
+    .dashboard-legend-panel .airport-list > div { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 4px !important; }
+    .dashboard-legend-panel .airport-list > div > div:empty { display: none; }
+    .dashboard-legend-panel .dashboard-medical-levels { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .dashboard-legend-panel .dashboard-medical-levels .class-column > div { padding-right: 0; }
+    .dashboard-legend-panel .dashboard-medical-levels .class-column > div:not(.class-header) { flex-direction: column !important; gap: 4px !important; }
+    .dashboard-legend-panel .btn { white-space: normal; width: 100%; }
+    .dashboard-legend-panel .btn small { text-align: left; }
 
 /* ===== Google Places Autocomplete Fix ===== */
 .pac-container {
@@ -509,6 +473,72 @@
 .medical-info-content ul { padding-left: 20px; margin-bottom: 12px; }
 .medical-info-content li { margin-bottom: 5px; }
 .medical-info-content .level66-additional-info { padding: 8px 0 0; }
+    .dashboard-map-layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        align-items: start;
+    }
+    .dashboard-content-column {
+        display: none;
+        background: #fff;
+    }
+    .dashboard-map-layout #map .gm-style-mtc {
+        margin-top: 60px !important;
+    }
+    .dashboard-map-layout.is-content-open {
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 12px;
+    }
+    .dashboard-map-layout.is-content-open .dashboard-content-column {
+        display: block;
+        width: 240px;
+    }
+    .dashboard-map-stage { position: relative; min-width: 0; }
+    .dashboard-content-toggle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 115px;
+        min-height: 40px;
+        padding: 9px 12px;
+        border: 1px solid #bbc7d5;
+        border-radius: 7px;
+        background: #fff;
+        color: #19334e;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .dashboard-content-toggle:hover { background: #f5f8fb; }
+    .dashboard-content-toggle[aria-expanded="true"] {
+        width: 30px;
+        min-height: 34px;
+        padding: 6px;
+        justify-content: center;
+        margin-left: auto;
+        font-size: 20px;
+    }
+    .dashboard-content-toggle[aria-expanded="true"] .content-info-label { display: none; }
+    .dashboard-content-toggle:focus-visible { outline: 2px solid #346abb; }
+    .dashboard-map-layout .dashboard-legend-sidebar {
+        width: 100%;
+        margin-top: 0;
+        padding: 0;
+    }
+    .dashboard-map-layout .dashboard-legend-sidebar[hidden] { display: none; }
+    .dashboard-map-layout #routePanel { left: 10px !important; }
+    @media (max-width: 767px) {
+        .dashboard-map-layout,
+        .dashboard-map-layout.is-content-open { grid-template-columns: minmax(0, 1fr); }
+        .dashboard-map-layout.is-content-open .dashboard-content-column { width: 100%; }
+    }
 </style>
 
 @endpush
@@ -517,124 +547,7 @@
 
 <div class="card">
     <div class="row" style="background-color: #dfeaf1;">
-        <div class="col-md-9">
-            <div class="d-flex p-3">
-                <div class="classification-toolbar">
-
-                <!-- Airport -->
-                      <div class="class-column airfield-legend-column">
-                        <div class="airport-list airfield-legend-list">
-                          <div class="class-header class-airport-category">Airfield Classification</div>
-                          <div class="hospital-row legend-grid airfield-legend-grid">
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level6Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/International-Airport.png" style="width:18px; height:18px;">
-                                  <small>International</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level5Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-airport.png" style="width:18px; height:18px;">
-                                  <small>Domestic</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level4Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-domestic-airport.png" style="width:18px; height:18px;">
-                                  <small>Regional</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level2Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/civil-military-airport.png" style="width:18px; height:18px;">
-                                  <small>Civil-Military</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level3Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/military-airport-red.png" style="width:18px; height:18px;">
-                                  <small>Military</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level1Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/private-airport.png" style="width:18px; height:18px;">
-                                  <small>Private</small>
-                              </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Medical Facility Legend -->
-                      <div class="medical-legend-column" style="flex-direction: column;">
-                        <!-- Title -->
-                        <div class="class-header class-medical-classification">Medical Facility Classification</div>
-                        <div class="medical-legend-groups">
-                            <!-- Advanced -->
-                            <div class="class-column medical-legend-group">
-                              <div class="class-header class-advanced">Advanced</div>
-                              <div class="medical-legend-items">
-                                  <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level66Modal">
-                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:24px; height:24px;">
-                                    <small>Level 6</small>
-                                  </button>
-                              </div>
-                            </div>
-
-                            <!-- Intermediate -->
-                            <div class="class-column medical-legend-group">
-                              <div class="class-header class-intermediate">Intermediate</div>
-                              <div class="medical-legend-items">
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level55Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24px; height:24px;">
-                                      <small>Level 5</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level44Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
-                                      <small>Level 4</small>
-                                    </button>
-                              </div>
-                            </div>
-
-                            <!-- Basic -->
-                            <div class="class-column medical-legend-group">
-                              <div class="class-header class-basic">Basic</div>
-                              <div class="medical-legend-items">
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level33Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:24px; height:24px;">
-                                      <small>Level 3</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level22Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24px; height:24px;">
-                                      <small>Level 2</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level11Modal">
-                                        <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                        <small>Level 1</small>
-                                    </button>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-
-                       <div class="class-column police-legend-column">
-                        <div class="airport-list police-legend-list">
-                            <div class="class-header class-airport-category">Police Classification</div>
-                            <div class="hospital-row legend-grid police-legend-grid">
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police4Modal">
-                                        <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
-                                        <small>National Police HQ</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police3Modal">
-                                        <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
-                                        <small>Divisional Command</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police2Modal">
-                                         <img src="{{ asset('images/Layer3.png') }}" style="width:12px; height:12px;">
-                                        <small>Provincial Police Command (PPC)</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police1Modal">
-                                        <img src="{{ asset('images/Layer4.png') }}" style="width:12px; height:12px;">
-                                        <small>District Police Command / Police Station</small>
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="d-flex justify-content-end p-3">
                 <div class="d-flex gap-2 mt-2">
 
@@ -667,18 +580,119 @@
         </div>
     </div>
 
-     <div class="col-md-12">
-        <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
-            <i class="bi bi-info-circle text-primary fs-5"></i>
-            <small>Disclaimer</small>
-        </button>
-    </div>
-
 </div>
 
-<div style="position:relative;">
+<div class="dashboard-map-layout">
+    <div class="dashboard-content-column">
+        <aside id="dashboardContentInfo" class="dashboard-legend-sidebar dashboard-classifications" aria-label="Map classifications" hidden>
+<details class="dashboard-legend-panel"><summary>Aviation<span class="legend-toggle" aria-hidden="true"></span></summary><div class="dashboard-classification-group">
+                        <div class="class-header class-airport-category">AIRFIELD CLASSIFICATION</div>
+                        <div class="airport-list">
+                          <div style="display: grid; grid-template-columns: max-content max-content max-content max-content; column-gap: 15px; row-gap: 5px;">
+                            <!-- Airport row 1 -->
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level6Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/International-Airport.png" style="width:18px; height:18px;">
+                                  <small>International</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level5Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-airport.png" style="width:18px; height:18px;">
+                                  <small>Domestic</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level4Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-domestic-airport.png" style="width:18px; height:18px;">
+                                  <small>Regional</small>
+                              </button>
+                            </div>
+                            <div></div> <!-- empty grid item for row 1 -->
 
-<div id="map"></div>
+                            <!-- Airport row 2 -->
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level2Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/civil-military-airport.png" style="width:18px; height:18px;">
+                                  <small>Civil-Military</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level3Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/military-airport-red.png" style="width:18px; height:18px;">
+                                  <small>Military</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level1Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/private-airport.png" style="width:18px; height:18px;">
+                                  <small>Private</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/11/helipad-removebg.png" style="width:18px; height:18px;">
+                                  <small>Helipad</small>
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div></details><details class="dashboard-legend-panel"><summary>Medical Facilities<span class="legend-toggle" aria-hidden="true"></span></summary><div class="dashboard-classification-group">
+                        <!-- Title -->
+                        <div>
+                            <div class="class-header class-medical-classification" style="text-align:left;">Medical Facility Classification</div>
+                        </div>
+                        <div class="dashboard-medical-levels">
+
+                            <!-- Intermediate -->
+                            <div class="class-column" style="align-items: flex-start; text-align: left;">
+                              <div class="class-header class-intermediate">Intermediate</div>
+                              <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 10px;">
+                                  <button class="btn p-1 legend-grid-item" style="width: auto; padding-left: 0 !important;" data-bs-toggle="modal" data-bs-target="#level55Modal">
+                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24px; height:24px;">
+                                    <small>Hospital</small>
+                                  </button>
+                              </div>
+                            </div>
+
+                            <!-- Basic -->
+                            <div class="class-column" style="align-items: flex-start; text-align: left;">
+                              <div class="class-header class-basic">Basic</div>
+                              <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 10px;">
+                                  <button class="btn p-1 legend-grid-item" style="width: auto; padding-left: 0 !important;" data-bs-toggle="modal" data-bs-target="#level33Modal">
+                                    <img src="https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital_pin-green.png" style="width:24px; height:24px;">
+                                    <small>Clinic / Health Centre</small>
+                                  </button>
+                              </div>
+                            </div>
+                        </div>
+                      </div></details><details class="dashboard-legend-panel"><summary>Police<span class="legend-toggle" aria-hidden="true"></span></summary><div class="dashboard-classification-group">
+                        <div class="class-header class-airport-category">POLICE CLASSIFICATION</div>
+
+                        <div class="airport-list">
+                            <div style="display: grid; grid-template-columns: repeat(3, max-content); column-gap: 15px;">
+                                <div class="hospital-item">
+                                    <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#police4Modal">
+                                        <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
+                                        <small>National Police (HQ)</small>
+                                    </button>
+                                </div>
+                                <div class="hospital-item">
+                                    <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#police3Modal">
+                                        <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
+                                        <small>Police Precint</small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div></details>
+        </aside>
+    </div>
+    <div class="dashboard-map-stage">
+        <button type="button" class="dashboard-content-toggle" aria-expanded="false" aria-controls="dashboardContentInfo" aria-label="Open Content Info"><span class="content-info-label">Content Info</span><span aria-hidden="true">&#8250;</span></button>
+        <div id="map"></div>
 
 <!-- Route Detail Panel -->
 <div id="routePanel" style="
@@ -721,20 +735,6 @@
 
 </div>
 
-<div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="disclaimerLabel">Disclaimer</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-       <p class="p-modal text-justify">Every attempt has been made to ensure the completeness and accuracy of the most updated information and data available. Clients are advised, however, that provided information, and data is subject to change.</p>
-       <h5 class="modal-title" id="disclaimerLabel">Google Maps Link</h5>
-       <p class="p-modal text-justify">Google Maps may automatically display or translate content based on the user’s current region, browser settings, or Google account preferences. This issue may occur when opening google maps link from TCMT platform using Microsoft Edge. For the best experience, we recommend opening the Google Chrome link while logged into your Google account. You can also use your browser’s translation feature to view Google Maps in your preferred language.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="modal fade" id="level1Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
@@ -1042,95 +1042,31 @@
       <div class="modal-header">
          <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 3 – Health Centre - Rural / Urban Clinic – Urban Centre (HC-UC)</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Clinic / Health Centre</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <h6 class="fw-bold">
-                <b>Overview</b>
-            </h6>
-            <p class="text-justify">
-                Level 3 facility is a primary healthcare center in Guam, providing integrated outpatient and limited inpatient services with nursing officers, community health workers, and in some cases medical officers. Level 3 hospitals are the main service delivery point for preventive, promotive, and basic curative care at the community level, receiving referrals from Level 1–2 facilities and referring more complex cases to Level 4 hospitals, while supporting public health programs under the guidance of the Guam National Department of Health.
-            </p>
-             <h6 class="fw-bold">
-                <b>Role</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Primary care hub for defined catchment population</li>
-                    <li>Receives referrals from Level 1–2 facilities (aid posts)</li>
-                    <li>Refers moderate and complex cases to Level 4 hospitals</li>
-                    <li>Implements national public health and outreach programs</li>
-                </ul>
-            </p>
-            <h6 class="fw-bold">
-                <b>Clinical Services</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Bed Capacity: Typically 10–40 beds (limited inpatient capability)</li>
-                    <li>
-                        <strong>Core Services</strong>
-                        <ul>
-                            <li>General outpatient care</li>
-                            <li>Maternal and child health (antenatal, delivery, postnatal)</li>
-                            <li>Basic inpatient care</li>
-                            <li>Management of common diseases</li>
-                            <li>Immunization and public health programs</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Emergency Services</strong>
-                        <ul>
-                            <li>Basic emergency care</li>
-                            <li>Stabilization prior to referral</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Diagnostic</strong>
-                        <ul>
-                            <li>Basic laboratory (e.g. malaria, hemoglobin)</li>
-                            <li>Rapid diagnostic tests</li>
-                            <li>No advanced imaging</li>
-                        </ul>
-                    </li>
-                </ul>
-            </p>
-             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Guam Government Health System
-            </h5>
-            <p class="text-justify">
-                Guam operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Guam National Department of Health and delivered through a decentralized network of provincial and district health services.
-            </p>
-            <p class="text-justify">
-                Healthcare financing is primarily derived from:
-                <ul>
-                    <li>General government taxation</li>
-                    <li>Significant external donor support</li>
-                </ul>
-                Guam does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
-            </p>
-            <h5 class="fw-bold" style="color:#3c8dbc;">
-                Public Health Service Delivery System (Government & Provincial Health Authorities)
-            </h5>
-            <p class="text-justify">
-                Guam’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
-            </p>
-            <p class="text-justify">
-                The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
-            </p>
-            <p class="text-justify">
-                Care is delivered through a tiered referral system (Level 1–6), with patients typically accessing care through primary-level facilities before being referred to higher-level hospitals.
-            </p>
-            <p class="text-justify">
-                Public providers include:
-                <ul>
-                    <li>Aid Posts, Health Sub-centers, and Health Centers (primary care)</li>
-                    <li>District, Provincial, and Regional / National Hospitals (secondary and tertiary care)</li>
-                </ul>
-                This structure emphasizes primary healthcare, disease prevention, and maternal-child health services, but patient choice of provider is limited, particularly in rural areas.
-            </p>
+            <h6 class="fw-bold"><b>Overview</b></h6>
+            <p class="text-justify">Community Health Centers are the primary-care tier of Guam’s public system. The Community Health Centers Act of 2025 (10 GCA Chapter 3, Article 8, as amended by P.L. 38-097 on 11 February 2026) makes the Guam Community Health Centers (GCHC) “a public corporation and autonomous instrumentality.” GCHC is administered by a Board of Directors and a Chief Executive Officer, and must follow US Health Resources &amp; Services Administration (HRSA) Health Center Program requirements (10 GCA Section 3803). The law names two regional centers (10 GCA Section 3808): the Northern Regional Community Health Center (NRCHC) in Dededo and the Southern Regional Community Health Center (SRCHC) in Inalåhan. The Board may establish more centers (10 GCA Sections 3805(g) and 3808(c)).</p>
+            <p class="text-justify"><strong>Note:</strong> The Community Health Centers are moving out of the Department of Public Health and Social Services (DPHSS). Section 3815 sets a three-year transition period starting on enactment (11 February 2026), extendable one year at a time for up to three more years. During this period GCHC works toward “full administrative and operational independence,” after which all program staff, property and federal grant responsibilities transfer from DPHSS to GCHC. Until the transition is complete, sources may describe the centers as either DPHSS facilities or GCHC facilities; both refer to the same tier. The law also refers to a DPHSS Central Public Health Facility (10 GCA Section 3108), which delivers public-health programs rather than general primary care. Record it as “Public — public health facility (DPHSS)” and do not count it as a Community Health Center.</p>
+            <h6 class="fw-bold"><b>Role</b></h6>
+            <ul>
+                <li>Provide “basic quality health care to the people of Guam” (10 GCA Section 3801) as the entry point to the public system, with each regional center tasked to provide “quality comprehensive primary health care services to all the residents of Guam” (10 GCA Section 3808)</li>
+                <li>Fill gaps where private clinics are “saturated,” not meeting demand, or unavailable in primary care, pediatric care, prenatal care, infectious disease care and urgent care (10 GCA Section 3805(g))</li>
+                <li>Provide primary and urgent care where such services are unavailable in the community, including through contracts with GMHA or other providers (10 GCA Section 3810); refer patients needing hospital care to GMH or another hospital.</li>
+            </ul>
+            <h6 class="fw-bold"><b>Clinical Service</b></h6>
+            <p><strong>Typical Bed Capacity</strong></p>
+            <ul>
+                <li>No inpatient beds; the Community Health Centers are outpatient facilities. The law sets no bed or staffing standard for them.</li>
+            </ul>
+            <p><strong>Diagnostic &amp; Support Infrastructure</strong></p>
+            <ul>
+                <li>Outpatient medical, pharmacy and primary-care services. The law authorizes a Chief Pharmacist for the Northern and Southern Community Health Centers (10 GCA Section 3108) and requires a Medical Director, preferably a board-certified or board-eligible primary care physician (10 GCA Section 3804(c))</li>
+                <li>Sliding fees: the law says fees “shall not be [a] deterrent to receiving health care” (10 GCA Section 3807)</li>
+            </ul>
+            <p class="text-justify"><em><strong>Note:</strong> Legal basis: 10 GCA Chapter 3, Article 1 (Section 3108) and Article 8 (Sections 3801–3818), as amended by P.L. 38-097 (11 February 2026). This law is very recent, so confirm the status of the transition before relying on it.</em></p>
       </div>
     </div>
   </div>
@@ -1241,104 +1177,37 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 5 – Provincial Hospital, Health Services and Public Health Programs (PHA)</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Hospital</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            <h6 class="fw-bold">
-                <b>Overview</b>
-            </h6>
-            <p class="text-justify">
-                Level 5 facility is a provincial-level tertiary hospital in Guam, operating under Provincial Health Authorities (PHAs) and provides advanced general and selected specialist medical, surgical, obstetric, pediatric, and diagnostic services with specialist and medical officer support. Level 5 hospitals are the primary referral center for Level 1–4 facilities in the province and surrounding areas, managing complex but not nationally referred cases while stabilizing and transferring highly specialized cases to Level 6, and is a key node for provincial clinical governance, workforce training, and implementation of national health programs and standards under the guidance of the Guam National Department of Health.
-            </p>
-             <h6 class="fw-bold">
-                <b>Role</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Main referral hospital at provincial level</li>
-                    <li>Provides specialist services for the province</li>
-                    <li>Supervises district and rural health facilities</li>
-                    <li>Supports public health programs and disease surveillance</li>
-                </ul>
-            </p>
-            <h6 class="fw-bold">
-                <b>Clinical Services</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Bed Capacity: Typically 100–500 beds</li>
-                    <li>
-                        <strong>Clinical Services</strong>
-                        <ul>
-                            <li>Internal Medicine</li>
-                            <li>General Surgery</li>
-                            <li>Obstetrics & Gynecology</li>
-                            <li>Pediatrics</li>
-                            <li>Emergency services</li>
-                            <li>Basic anesthesia and operative care</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Emergency & Critical Care</strong>
-                        <ul>
-                            <li>24-hour emergency services</li>
-                            <li>Basic ICU or high-dependency care</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Surgical Capacity</strong>
-                        <ul>
-                            <li>General surgery</li>
-                            <li>Cesarean section</li>
-                            <li>Basic orthopedic procedures</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Diagnostics</strong>
-                        <ul>
-                            <li>X-ray and ultrasound</li>
-                            <li>Laboratory services (hematology, chemistry, microbiology)</li>
-                            <li>Blood transfusion services</li>
-                        </ul>
-                    </li>
-                </ul>
-            </p>
-             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Guam Government Health System
-            </h5>
-            <p class="text-justify">
-                Guam operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Guam National Department of Health and delivered through a decentralized network of provincial and district health services.
-            </p>
-            <p class="text-justify">
-                Healthcare financing is primarily derived from:
-                <ul>
-                    <li>General government taxation</li>
-                    <li>Significant external donor support</li>
-                </ul>
-                Guam does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
-            </p>
-            <h5 class="fw-bold" style="color:#3c8dbc;">
-                Public Health Service Delivery System (Government & Provincial Health Authorities)
-            </h5>
-            <p class="text-justify">
-                Guam’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
-            </p>
-            <p class="text-justify">
-                The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
-            </p>
-            <p class="text-justify">
-                Care is delivered through a tiered referral system (Level 1–6), with patients typically accessing care through primary-level facilities before being referred to higher-level hospitals.
-            </p>
-            <p class="text-justify">
-                Public providers include:
-                <ul>
-                    <li>Aid Posts, Health Sub-centers, and Health Centers (primary care)</li>
-                    <li>District, Provincial, and Regional / National Hospitals (secondary and tertiary care)</li>
-                </ul>
-                This structure emphasizes primary healthcare, disease prevention, and maternal-child health services, but patient choice of provider is limited, particularly in rural areas.
-            </p>
+            <h6 class="fw-bold"><b>Overview</b></h6>
+            <p class="text-justify">The Guam Memorial Hospital (GMH) is Guam’s only public hospital and the top of the civilian public system. It is run by the Guam Memorial Hospital Authority (GMHA), which the law makes “a public corporation and an autonomous instrumentality” of the government of Guam (10 GCA Section 80102). GMHA is governed by a Board of Trustees (10 GCA Section 80105). By law, GMHA must “[m]aintain and operate a facility providing acute, chronic and all other health care services,” including services it provides by contract for the Guam Behavioral Health and Wellness Center (10 GCA Section 80109(a)). The acute-care hospital is at Oka Point, Tamuning. GMHA also runs a separately located Skilled Nursing Facility in Barrigada Heights.</p>
+            <p class="text-justify"><strong>Note:</strong> Three other facilities sit outside this tier. First, the Guam Behavioral Health and Wellness Center (GBHWC), formerly the Department of Mental Health and Substance Abuse, is a separate government department. By law it provides “comprehensive inpatient and community-based outpatient mental health, alcohol and drug programs and services” (10 GCA Section 86101); record it as “Public — specialty behavioral health facility,” not as a general hospital. Second, the US Naval Hospital Guam in Agana Heights is a federal military hospital serving primarily active-duty personnel and other military beneficiaries. It is not governed by the GCA; record it as “Federal (military) hospital” and leave it out of the civilian tiers. Third, GMH’s accreditation should be checked before it is cited. GMH regained Joint Commission accreditation in 2010 and lost it again in July 2018. GMHA currently describes the hospital as CMS certified, and its laboratory is accredited by the College of American Pathologists (CAP). We did not find a current Joint Commission status, so treat any claim of current Joint Commission accreditation as unverified.</p>
+            <h6 class="fw-bold"><b>Role</b></h6>
+            <ul>
+                <li>Serve as Guam’s only public acute-care hospital and the main civilian referral hospital for the Community Health Centers and private clinics</li>
+                <li>Provide 24-hour emergency care. By law, GMHA must also establish an Urgent Healthcare Center on the hospital premises for non-emergency outpatient care, meeting Joint Commission and CMS primary-care / urgent-care criteria (10 GCA Section 80123)</li>
+                <li>Serve as the hospital of last resort for patients covered by government programs. GMHA’s accounts must separately track receivables from Medicare, Medicaid, the Medically Indigent Program, Worker’s Compensation and other governments, including the Freely Associated States (10 GCA Section 80116)</li>
+                <li>Provide hospitalization, treatment and drugs for medically indigent patients with irreversible renal failure (10 GCA Section 80117).</li>
+            </ul>
+            <h6 class="fw-bold"><b>Clinical Service</b></h6>
+            <p><strong>Core Capability Areas</strong></p>
+            <ul>
+                <li>Acute and chronic inpatient care, emergency care, and the on-site urgent care center mandated by 10 GCA Section 80123</li>
+                <li>Long-term (skilled nursing) care at the off-site Skilled Nursing Facility. Under 10 GCA Section 7103(b), a nursing home run with a hospital needs its own nursing-home license, separate from the hospital’s</li>
+            </ul>
+            <p><strong>Diagnostic &amp; Support Infrastructure</strong></p>
+            <ul>
+                <li>Hospital clinical laboratory (CAP-accredited), with diagnostic and treatment services. The statutory definition of a “hospital” requires at least clinical laboratory services, diagnostic x-ray services, and facilities for surgery, obstetric care or other definitive treatment (10 GCA Section 25101(d))</li>
+                <li>Aging infrastructure. The Guam Legislature has found that GMH’s buildings are more than 50 years old, “in an overall state of failure,” and endanger its CMS-based accreditation status. It authorized a replacement healthcare campus under the Guam Twenty-First (21st) Century Healthcare Center Act of 2021 (12 GCA Chapter 83)</li>
+            </ul>
+            <p><strong>Typical Bed Capacity</strong></p>
+            <ul>
+                <li>About 158–161 licensed acute-care beds at Tamuning, plus 40 licensed long-term-care beds at the Barrigada Heights Skilled Nursing Facility. Sources differ slightly on the acute-care figure.</li>
+            </ul>
+            <p class="text-justify"><em><strong>Note:</strong> Legal basis: 10 GCA Sections 25101, 7103, 80102–80123 and 86101; 12 GCA Chapter 83. Bed counts and accreditation history come from Guampedia and Wikipedia; CMS certification and CAP accreditation come from the GMHA website (gmha.org). None of these details are stated in the GCA itself.</em></p>
       </div>
     </div>
   </div>
@@ -1575,30 +1444,29 @@
       <div class="modal-header">
         <div class="d-flex align-items-center gap-2">
           <img src="{{ asset('images/Layer2.png') }}" alt="Divisional Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police3ModalLabel">Divisional Command</h5>
+          <h5 class="modal-title" id="police3ModalLabel">Police Precint</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
-        <p><strong>Command Level:</strong> Top Territorial Police Command</p>
-        <p><strong>Typical Head Rank:</strong> Assistant Commissioner of Police (ACP)</p>
-        <p><strong>Administrative Equivalent:</strong> Multi-provincial police region (Police Division)</p>
-
-        <p>Exercises operational command over one of the RPNGC's territorial police divisions by supervising provincial and metropolitan police commands, implementing national policing strategies, coordinating regional law enforcement operations, and ensuring the effective delivery of policing services across multiple provinces.</p>
-
+        <p><strong>Command level:</strong> Lowest-level territorial command</p>
+        <p><strong>Typical Head Rank:</strong> Police Lieutenant</p>
+        <p><strong>Administrative Equivalent:</strong> Police Precinct/local police command</p>
+        <p><strong>Role:</strong> Precinct Commands are the local territorial policing unit responsible for delivering frontline police services within designated geographic jurisdictions.</p>
+        <p><strong>Function:</strong> Precinct Commands manage patrol officers and shifts, coordinate first-response policing, and maintain day-to-day public safety and police presence within the Precinct area.</p>
         <p class="mb-2"><strong>Responsibilities:</strong></p>
         <ul>
-          <li>Command a Regional (Divisional) Police Command.</li>
-          <li>Supervise Provincial Police Commanders (PPCs) within the division.</li>
-          <li>Coordinate regional law enforcement operations and public order activities.</li>
-          <li>Allocate personnel and operational resources among provincial commands.</li>
-          <li>Monitor crime trends and operational performance across the division.</li>
-          <li>Coordinate multi-provincial investigations and security operations.</li>
-          <li>Support disaster response and emergency management activities.</li>
-          <li>Ensure implementation of national policing policies and operational directives.</li>
-          <li>Report regional operational performance to the Deputy Commissioner (Regional Operations).</li>
-          <li>Strengthen cooperation with provincial governments and regional stakeholders.</li>
+          <li>Direct daily patrol operations within the Precinct jurisdiction.</li>
+          <li>Supervise patrol officers, shifts, and other assigned frontline personnel.</li>
+          <li>Allocate personnel and patrol resources according to local operational requirements.</li>
+          <li>Manage responses to emergency and non-emergency calls for service.</li>
+          <li>Monitor crime, disorder, traffic, and public-safety conditions within the Precinct.</li>
+          <li>Coordinate preliminary responses to incidents requiring specialized GPD services.</li>
+          <li>Maintain liaison with residents, businesses, community organizations, and local authorities.</li>
+          <li>Review incident, arrest, and other operational reports submitted by patrol personnel.</li>
+          <li>Implement GPD policies and operational directives at the Precinct level.</li>
+          <li>Report Precinct activities, incidents, personnel matters, and operational requirements through the Neighborhood Patrol District command.</li>
         </ul>
       </div>
     </div>
@@ -1617,25 +1485,23 @@
       </div>
 
       <div class="modal-body">
-        <p><strong>Command Level:</strong> National Police Commander</p>
-        <p><strong>Typical Head Rank:</strong> Commissioner of Police (COP)</p>
-
-        <p><strong>Role:</strong> Highest commander of the RPNGC and chief executive responsible for national police leadership, strategic direction, and institutional governance.</p>
-
-        <p>Exercises overall command, control, and administration of the RPNGC by directing national policing operations, implementing government policing policies, and ensuring the effective delivery of law enforcement services throughout PNG.</p>
-
+        <p><strong>Command level:</strong> Highest-level territorial command</p>
+        <p><strong>Typical Head Rank:</strong> Police Major</p>
+        <p><strong>Administrative Equivalent:</strong> Territorial policing bureau</p>
+        <p><strong>Role:</strong> The Patrol Operations Bureau is the principal departmental command responsible for organizing and overseeing GPD’s geographically based patrol operations throughout Guam.</p>
+        <p>The Patrol Operations Bureau directs territorial patrol services, coordinates the neighborhood patrol districts and precinct commands, and ensures consistent delivery of frontline police services across the island.</p>
         <p class="mb-2"><strong>Responsibilities:</strong></p>
         <ul>
-          <li>Exercise overall command and control of the RPNGC.</li>
-          <li>Formulate national policing strategies and organizational priorities.</li>
-          <li>Advise the Minister for Police and the National Executive Council on policing and internal security matters.</li>
-          <li>Direct and supervise Deputy Commissioners and senior executive officers.</li>
-          <li>Oversee law enforcement, public order, criminal investigations, and national security-related policing operations.</li>
-          <li>Ensure compliance with the Constitution, the Police Act 1998, and other applicable legislation.</li>
-          <li>Manage institutional governance, accountability, ethics, and professional standards.</li>
-          <li>Represent the RPNGC in intergovernmental, regional, and international policing cooperation.</li>
-          <li>Approve organizational restructuring, resource allocation, and strategic development initiatives.</li>
-          <li>Promote modernization, professionalization, and capacity-building throughout the Constabulary.</li>
+          <li>Direct territorial patrol operations throughout Guam.</li>
+          <li>Supervise the activities of the neighborhood patrol districts and precinct commands.</li>
+          <li>Establish patrol priorities and operational requirements for territorial policing.</li>
+          <li>Coordinate deployment of patrol personnel and resources according to operational needs.</li>
+          <li>Monitor emergency response and frontline police service delivery.</li>
+          <li>Manage major incidents requiring resources from multiple Precincts or districts.</li>
+          <li>Ensure implementation of department-wide policing policies at the territorial level.</li>
+          <li>Review operational reports, crime patterns, and patrol performance from subordinate commands.</li>
+          <li>Oversee territorial operations with specialized GPD bureaus and divisions.</li>
+          <li>Report territorial policing activities and operational requirements to the Police Commander.</li>
         </ul>
       </div>
     </div>
@@ -1739,6 +1605,29 @@ document.addEventListener('DOMContentLoaded', function () {
 @endsection
 
 @push('service')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.querySelector('.dashboard-content-toggle');
+        const panel = document.getElementById('dashboardContentInfo');
+        if (!toggle || !panel) return;
+        function setContentInfoOpen(open) {
+            panel.hidden = !open;
+            toggle.closest('.dashboard-map-layout').classList.toggle('is-content-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Close Content Info' : 'Open Content Info');
+            toggle.querySelector('[aria-hidden]').textContent = open ? '\u2039' : '\u203a';
+        }
+        toggle.addEventListener('click', function () {
+            setContentInfoOpen(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                setContentInfoOpen(false);
+                toggle.focus();
+            }
+        });
+    });
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd-WVlGgZFJwAtPZkbAEca2Np6OI7CBTM&libraries=places,geometry,drawing"></script>
 

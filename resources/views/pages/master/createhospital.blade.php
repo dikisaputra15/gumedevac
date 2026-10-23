@@ -95,8 +95,8 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Icon</label>
-                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24; height:24;"> Hospital
-                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24; height:24;"> Clinic / Health Center
+                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24; height:24;"> Hospital
+                <input type="radio" name="icon" value="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png"><img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:24; height:24;"> Clinic / Health Center
             </div>
         </div>
 

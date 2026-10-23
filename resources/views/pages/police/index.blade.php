@@ -390,22 +390,6 @@
 </div>
 
 
-<div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="disclaimerLabel">Disclaimer</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-       <p class="p-modal text-justify">Every attempt has been made to ensure the completeness and accuracy of the most updated information and data available. Clients are advised, however, that provided information, and data is subject to change.</p>
-       <h5 class="modal-title" id="disclaimerLabel">Google Maps Link</h5>
-       <p class="p-modal text-justify">Google Maps may automatically display or translate content based on the user’s current region, browser settings, or Google account preferences. This issue may occur when opening google maps link from TCMT platform using Microsoft Edge. For the best experience, we recommend opening the Google Chrome link while logged into your Google account. You can also use your browser’s translation feature to view Google Maps in your preferred language.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="modal fade" id="police1Modal" tabindex="-1" aria-labelledby="police1ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
     <div class="modal-content">
@@ -484,30 +468,29 @@
       <div class="modal-header">
         <div class="d-flex align-items-center gap-2">
           <img src="{{ asset('images/Layer2.png') }}" alt="Divisional Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police3ModalLabel">Divisional Command</h5>
+          <h5 class="modal-title" id="police3ModalLabel">Police Precinct</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
-        <p><strong>Command Level:</strong> Top Territorial Police Command</p>
-        <p><strong>Typical Head Rank:</strong> Assistant Commissioner of Police (ACP)</p>
-        <p><strong>Administrative Equivalent:</strong> Multi-provincial police region (Police Division)</p>
-
-        <p>Exercises operational command over one of the RPNGC's territorial police divisions by supervising provincial and metropolitan police commands, implementing national policing strategies, coordinating regional law enforcement operations, and ensuring the effective delivery of policing services across multiple provinces.</p>
-
+        <p><strong>Command level:</strong> Lowest-level territorial command</p>
+        <p><strong>Typical Head Rank:</strong> Police Lieutenant</p>
+        <p><strong>Administrative Equivalent:</strong> Police Precinct/local police command</p>
+        <p><strong>Role:</strong> Precinct Commands are the local territorial policing unit responsible for delivering frontline police services within designated geographic jurisdictions.</p>
+        <p><strong>Function:</strong> Precinct Commands manage patrol officers and shifts, coordinate first-response policing, and maintain day-to-day public safety and police presence within the Precinct area.</p>
         <p class="mb-2"><strong>Responsibilities:</strong></p>
         <ul>
-          <li>Command a Regional (Divisional) Police Command.</li>
-          <li>Supervise Provincial Police Commanders (PPCs) within the division.</li>
-          <li>Coordinate regional law enforcement operations and public order activities.</li>
-          <li>Allocate personnel and operational resources among provincial commands.</li>
-          <li>Monitor crime trends and operational performance across the division.</li>
-          <li>Coordinate multi-provincial investigations and security operations.</li>
-          <li>Support disaster response and emergency management activities.</li>
-          <li>Ensure implementation of national policing policies and operational directives.</li>
-          <li>Report regional operational performance to the Deputy Commissioner (Regional Operations).</li>
-          <li>Strengthen cooperation with provincial governments and regional stakeholders.</li>
+          <li>Direct daily patrol operations within the Precinct jurisdiction.</li>
+          <li>Supervise patrol officers, shifts, and other assigned frontline personnel.</li>
+          <li>Allocate personnel and patrol resources according to local operational requirements.</li>
+          <li>Manage responses to emergency and non-emergency calls for service.</li>
+          <li>Monitor crime, disorder, traffic, and public-safety conditions within the Precinct.</li>
+          <li>Coordinate preliminary responses to incidents requiring specialized GPD services.</li>
+          <li>Maintain liaison with residents, businesses, community organizations, and local authorities.</li>
+          <li>Review incident, arrest, and other operational reports submitted by patrol personnel.</li>
+          <li>Implement GPD policies and operational directives at the Precinct level.</li>
+          <li>Report Precinct activities, incidents, personnel matters, and operational requirements through the Neighborhood Patrol District command.</li>
         </ul>
       </div>
     </div>
@@ -526,25 +509,23 @@
       </div>
 
       <div class="modal-body">
-        <p><strong>Command Level:</strong> National Police Commander</p>
-        <p><strong>Typical Head Rank:</strong> Commissioner of Police (COP)</p>
-
-        <p><strong>Role:</strong> Highest commander of the RPNGC and chief executive responsible for national police leadership, strategic direction, and institutional governance.</p>
-
-        <p>Exercises overall command, control, and administration of the RPNGC by directing national policing operations, implementing government policing policies, and ensuring the effective delivery of law enforcement services throughout PNG.</p>
-
+        <p><strong>Command level:</strong> Highest-level territorial command</p>
+        <p><strong>Typical Head Rank:</strong> Police Major</p>
+        <p><strong>Administrative Equivalent:</strong> Territorial policing bureau</p>
+        <p><strong>Role:</strong> The Patrol Operations Bureau is the principal departmental command responsible for organizing and overseeing GPD’s geographically based patrol operations throughout Guam.</p>
+        <p>The Patrol Operations Bureau directs territorial patrol services, coordinates the neighborhood patrol districts and precinct commands, and ensures consistent delivery of frontline police services across the island.</p>
         <p class="mb-2"><strong>Responsibilities:</strong></p>
         <ul>
-          <li>Exercise overall command and control of the RPNGC.</li>
-          <li>Formulate national policing strategies and organizational priorities.</li>
-          <li>Advise the Minister for Police and the National Executive Council on policing and internal security matters.</li>
-          <li>Direct and supervise Deputy Commissioners and senior executive officers.</li>
-          <li>Oversee law enforcement, public order, criminal investigations, and national security-related policing operations.</li>
-          <li>Ensure compliance with the Constitution, the Police Act 1998, and other applicable legislation.</li>
-          <li>Manage institutional governance, accountability, ethics, and professional standards.</li>
-          <li>Represent the RPNGC in intergovernmental, regional, and international policing cooperation.</li>
-          <li>Approve organizational restructuring, resource allocation, and strategic development initiatives.</li>
-          <li>Promote modernization, professionalization, and capacity-building throughout the Constabulary.</li>
+          <li>Direct territorial patrol operations throughout Guam.</li>
+          <li>Supervise the activities of the neighborhood patrol districts and precinct commands.</li>
+          <li>Establish patrol priorities and operational requirements for territorial policing.</li>
+          <li>Coordinate deployment of patrol personnel and resources according to operational needs.</li>
+          <li>Monitor emergency response and frontline police service delivery.</li>
+          <li>Manage major incidents requiring resources from multiple Precincts or districts.</li>
+          <li>Ensure implementation of department-wide policing policies at the territorial level.</li>
+          <li>Review operational reports, crime patterns, and patrol performance from subordinate commands.</li>
+          <li>Oversee territorial operations with specialized GPD bureaus and divisions.</li>
+          <li>Report territorial policing activities and operational requirements to the Police Commander.</li>
         </ul>
       </div>
     </div>
