@@ -93,7 +93,7 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input category-radio" type="radio" name="category" value="Police Precint" data-icon="{{ asset('images/Layer2.png') }}">
                     <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">Police Precint</label>
+                    <label class="form-check-label">Police Precinct</label>
                 </div>
 
             </div>

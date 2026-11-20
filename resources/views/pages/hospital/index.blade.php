@@ -1776,14 +1776,8 @@ async function applyHospitalFilters() {
     addHospitalMarkers(filteredHospitals);
     document.getElementById('totalCountDisplay').innerHTML = `<strong>Hospitals:</strong> ${filteredHospitals.length}`;
 
-    Object.keys(levelCounts).forEach(level => {
-
-        const id = level.replace(/[^a-zA-Z0-9]/g,'-');
-        const el = document.getElementById(`count-${id}`);
-
-        if (el) {
-            el.textContent = levelCounts[level];
-        }
+    document.querySelectorAll('#filterPanel [data-facility-level-count]').forEach(count => {
+        count.textContent = levelCounts[count.dataset.facilityLevelCount] ?? 0;
     });
 }
 
@@ -1846,16 +1840,7 @@ combinedPanelDiv.innerHTML = `
                     <option value="{{ $n }}">{{ $n }}</option>
                 @endforeach
             </select>
-            <label>Facility Level:</label>
-            ${[
-                { alias: 'Hospital', value: 'Hospital' },
-                { alias: 'Clinic / Health Center', value: 'Clinic / Health Center' }
-            ].map(c => `
-            <label style="display:block;font-size:13px;margin-bottom:5px;">
-                <input type="checkbox" name="hospitalLevel" value="${c.value}">
-                ${c.alias} (<span id="count-${c.value.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
-            </label>
-            `).join('')}
+            @include('components.facility-level-filter')
             <hr>
             <div class="filter-box" id="provinceSelect">
                 <label class="filter-label">Province</label>
@@ -2201,7 +2186,7 @@ setTimeout(() => {
 // Retry sampai badge level (di dalam combinedPanelDiv) benar-benar ada di DOM,
 // supaya jumlah per level tidak "nyangkut" di 0 saat load pertama.
 function initialApplyFilters() {
-    if (!document.querySelector('#filterPanel [id^="count-"]')) {
+    if (!document.querySelector('#filterPanel [data-facility-level-count]')) {
         setTimeout(initialApplyFilters, 200);
         return;
     }

@@ -224,23 +224,6 @@
             margin: 16px auto;
         }
 
-        #policeAreaLayerModal .image-modal-dialog {
-            max-width: 1660px;
-        }
-
-        #policeAreaLayerModal .police-area-layer-body {
-            padding: 0;
-            overflow: hidden;
-        }
-
-        #policeAreaLayerModal .police-area-layer-frame {
-            display: block;
-            width: 100%;
-            height: calc(100vh - 110px);
-            height: calc(100dvh - 110px);
-            border: 0;
-        }
-
         .image-modal-dialog .modal-content {
             max-height: calc(100vh - 32px);
             overflow: hidden;
@@ -352,10 +335,7 @@
         <div class="d-flex justify-content-between align-items-center gap-3 my-2">
 
             <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
-                    <i class="bi bi-info-circle text-primary fs-5"></i>
-                    Disclaimer
-                </button>
+
             </div>
 
             <div class="d-flex align-items-center gap-3">
@@ -368,7 +348,7 @@
 
                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police3Modal">
                     <img src="{{ asset('images/Layer2.png') }}" style="width:15px; height:15px;">
-                    <small>Police Precint</small>
+                    <small>Police Precinct</small>
                 </button>
 
                 <button type="button" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}"
@@ -533,7 +513,7 @@
 </div>
 
 <div class="modal fade" id="policeAreaLayerModal" tabindex="-1" aria-labelledby="policeAreaLayerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered image-modal-dialog">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable image-modal-dialog">
     <div class="modal-content">
       <div class="modal-header py-2">
         <div class="d-flex align-items-center gap-2">
@@ -542,13 +522,13 @@
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body police-area-layer-body">
-        <iframe
-            class="police-area-layer-frame"
-            src="{{ asset('police-area-layer.html') }}"
-            title="Police Territorial Areas and Administrative Equivalents"
-            loading="lazy"
-        ></iframe>
+      <div class="modal-body p-4">
+        <ol class="mb-0 ps-4">
+          <li class="mb-3"><strong>Strategic Command:</strong> The Governor of Guam provides the civilian executive authority and strategic direction for the GPD, establishing the highest level of governmental oversight.</li>
+          <li class="mb-3"><strong>Headquarters Command:</strong> The Chief of Police and Police Commander provide departmental leadership and translate executive direction into organizational policies, priorities, and operational coordination across GPD.</li>
+          <li class="mb-3"><strong>Functional Command:</strong> Specialized bureaus and divisions, including Special Operations, Investigations, Forensic Science, Highway Patrol, Services, and Staff Services, provide professional and operational capabilities organized according to specific policing functions.</li>
+          <li><strong>Territorial Command:</strong> The Patrol Operations Bureau, through its neighborhood patrol districts and Precinct commands, provides geographically based policing throughout Guam and connects departmental command with frontline patrol officers and shifts.</li>
+        </ol>
       </div>
     </div>
   </div>
@@ -1236,7 +1216,12 @@ function addPoliceMarkers(data) {
 }
 
 // === Apply Filter POLICE ===
+@include('components.police-category-filter-script')
+
+let latestPoliceFilterRequest = 0;
+
 async function applyPoliceFilters() {
+    const request = ++latestPoliceFilterRequest;
     const provs = [...document.querySelectorAll('.province-checkbox:checked')].map(e => e.value);
     const categories = [...document.querySelectorAll('input[name="policeCategory"]:checked')].map(e => e.value);
     const policeName = $('#police_name_map').val() || '';
@@ -1246,7 +1231,6 @@ async function applyPoliceFilters() {
 
     if (policeName) filters.name = policeName;
     if (provs.length > 0) filters.provinces = provs;
-    if (categories.length > 0) filters.categories = categories;
 
     if (radius > 0 && lastClickedLocation) {
         filters.radius = radius;
@@ -1255,25 +1239,13 @@ async function applyPoliceFilters() {
     }
 
     const result = await fetchPoliceData(filters);
+    if (request !== latestPoliceFilterRequest) return;
 
-    const polices = result.polices;
-    const categoryCounts = result.categoryCounts;
-
+    const polices = filterPoliceByCategory(result.polices, document.getElementById('filterPanel'), categories);
     addPoliceMarkers(polices);
 
     document.getElementById('totalCountDisplay').innerHTML =
         `<strong>Police:</strong> ${polices.length}`;
-
-    Object.keys(categoryCounts).forEach(cat => {
-
-        const id = cat.replace(/[^a-zA-Z0-9]/g,'-');
-
-        const el = document.getElementById(`count-${id}`);
-
-        if (el) {
-            el.textContent = categoryCounts[cat];
-        }
-    });
 }
 
 // === Filter Panel (Custom Google Maps Control) ===
@@ -1335,16 +1307,7 @@ combinedPanelDiv.innerHTML = `
                     <option value="{{ $n }}">{{ $n }}</option>
                 @endforeach
             </select>
-            <label>Category:</label>
-            ${[
-                'National Police HQ',
-                'Police Precint',
-            ].map(c => `
-            <label style="display:block;font-size:13px;margin-bottom:5px;">
-                <input type="checkbox" name="policeCategory" value="${c}">
-                ${c} (<span id="count-${c.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
-            </label>
-            `).join('')}
+            @include('components.police-category-filter')
             <hr>
             <div class="filter-box" id="provinceSelect">
                 <label class="filter-label">Province</label>
@@ -1690,7 +1653,7 @@ setTimeout(() => {
 // Retry sampai badge kategori (di dalam combinedPanelDiv) benar-benar ada di DOM,
 // supaya jumlah per kategori tidak "nyangkut" di 0 saat load pertama.
 function initialApplyFilters() {
-    if (!document.querySelector('#filterPanel [id^="count-"]')) {
+    if (!document.querySelector('#filterPanel [data-police-category-count]')) {
         setTimeout(initialApplyFilters, 200);
         return;
     }

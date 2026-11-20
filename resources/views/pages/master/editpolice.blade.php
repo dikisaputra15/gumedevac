@@ -117,7 +117,7 @@
                         data-icon="{{ asset('images/Layer2.png') }}"
                         {{ $police->category == 'Police Precint' ? 'checked' : '' }}>
                     <img src="{{ asset('images/Layer2.png') }}" width="16">
-                    <label>Police Precint</label>
+                    <label>Police Precinct</label>
                 </div>
             </div>
         </div>

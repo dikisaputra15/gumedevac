@@ -675,13 +675,13 @@
                                 <div class="hospital-item">
                                     <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#police4Modal">
                                         <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
-                                        <small>National Police (HQ)</small>
+                                        <small>National Police HQ</small>
                                     </button>
                                 </div>
                                 <div class="hospital-item">
                                     <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#police3Modal">
                                         <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
-                                        <small>Police Precint</small>
+                                        <small>Police Precinct</small>
                                     </button>
                                 </div>
                             </div>
@@ -1444,7 +1444,7 @@
       <div class="modal-header">
         <div class="d-flex align-items-center gap-2">
           <img src="{{ asset('images/Layer2.png') }}" alt="Divisional Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police3ModalLabel">Police Precint</h5>
+          <h5 class="modal-title" id="police3ModalLabel">Police Precinct</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -2521,6 +2521,10 @@ document.addEventListener('change', function(e) {
         });
     }
 
+    @include('components.police-category-filter-script')
+
+    let latestMapFilterRequest = 0;
+
     // --- Apply Filters ---
     async function applyFiltersWithMapControl(
         facilities = [],
@@ -2531,6 +2535,7 @@ document.addEventListener('change', function(e) {
         airportName = '',
         hospitalName = ''
     ) {
+        const request = ++latestMapFilterRequest;
         let common = { provinces };
         if (radius > 0 && lastClickedLocation) {
             common.radius = radius;
@@ -2549,17 +2554,31 @@ document.addEventListener('change', function(e) {
         const showPolice = facilities.includes('police');
         const showEmbassy = facilities.includes('embassy');
 
-        // === HOSPITALS ===
+        const hospitalFilter = document.getElementById('hospitalFilter');
+        hospitalFilter.hidden = !showHospital;
+        const policeFilter = document.getElementById('policeFilter');
+        policeFilter.hidden = !showPolice;
+        const selectedPoliceCategories = [...policeFilter.querySelectorAll('input:checked')].map(input => input.value);
+
         if (showHospital) {
-             const result = await fetchData('/api/hospital', {
+            const result = await fetchData('/api/hospital', {
                 ...common,
-                name: hospitalName,
-                category: hospitalLevels
+                name: hospitalName
+            });
+            if (request !== latestMapFilterRequest) return;
+
+            hospitalFilter.querySelectorAll('[data-facility-level-count]').forEach(count => {
+                count.textContent = result.levelCounts?.[count.dataset.facilityLevelCount] ?? 0;
             });
 
-            addMarkers(result.hospitals, hospitalMarkers, null);
+            const selectedLevels = hospitalLevels.map(level => level.toLowerCase());
+            const hospitals = (result.hospitals ?? []).filter(item =>
+                selectedLevels.length === 0 ||
+                selectedLevels.includes((item.facility_level || '').trim().toLowerCase())
+            );
 
-            totalHospitals = result.hospitals.length;
+            addMarkers(hospitals, hospitalMarkers, null);
+            totalHospitals = hospitals.length;
         } else {
             clearMarkers(hospitalMarkers);
         }
@@ -2571,6 +2590,7 @@ document.addEventListener('change', function(e) {
                 ...common,
                 name: airportName
             });
+            if (request !== latestMapFilterRequest) return;
 
             const airports = Array.isArray(airportResponse)
                     ? airportResponse
@@ -2607,34 +2627,13 @@ document.addEventListener('change', function(e) {
             clearMarkers(airportMarkers);
         }
 
-        // === POLICE ===
-       if (showPolice) {
+        if (showPolice) {
+            const result = await fetchData('/api/polices', common);
+            if (request !== latestMapFilterRequest) return;
+            const police = filterPoliceByCategory(result.polices ?? [], policeFilter, selectedPoliceCategories);
 
-            const result = await fetchData('/api/polices', {
-                ...common
-            });
-
-            const police = result.polices || [];
-            const categoryCounts = result.categoryCounts || {};
-
-            addMarkers(
-                police,
-                policeMarkers,
-                null
-            );
-
+            addMarkers(police, policeMarkers, null);
             totalPolice = police.length;
-
-            Object.keys(categoryCounts).forEach(cat => {
-
-                const id = cat.replace(/[^a-zA-Z0-9]/g, '-');
-
-                const el = document.getElementById(`count-${id}`);
-
-                if (el) {
-                    el.textContent = categoryCounts[cat];
-                }
-            });
         } else {
             clearMarkers(policeMarkers);
         }
@@ -2645,6 +2644,7 @@ document.addEventListener('change', function(e) {
             const embassies = await fetchData('/api/embassy', {
                 ...common
             });
+            if (request !== latestMapFilterRequest) return;
 
             addMarkers(
                 embassies,
@@ -2736,6 +2736,14 @@ document.addEventListener('change', function(e) {
                         <div class="facility-item"><input class="form-check-input facility-checkbox" type="checkbox" value="police" id="facilityPolice"><label class="form-check-label" for="facilityPolice"><span class="facility-name">Police</span><span class="facility-count" id="policeCount">0</span></label></div>
                         <div class="facility-item"><input class="form-check-input facility-checkbox" type="checkbox" value="embassy" id="facilityEmbassy"><label class="form-check-label" for="facilityEmbassy"><span class="facility-name">Embassies</span><span class="facility-count" id="embassyCount">0</span></label></div>
                         <div class="facility-item"><input class="form-check-input" type="checkbox" value="all" id="facilityAll"><label class="form-check-label" for="facilityAll"><span class="facility-name is-all">All / Clear All</span></label></div>
+                    </div>
+
+                    <div id="hospitalFilter" hidden style="border-top:1px solid #ddd;margin-top:8px;">
+                        @include('components.facility-level-filter')
+                    </div>
+
+                    <div id="policeFilter" hidden style="border-top:1px solid #ddd;margin-top:8px;">
+                        @include('components.police-category-filter')
                     </div>
 
                     <hr>
@@ -2927,7 +2935,7 @@ document.addEventListener('click', async (e) => {
         const af = document.getElementById('airportFilter');
         const hf = document.getElementById('hospitalFilter');
         if (af) af.style.display = 'none';
-        if (hf) hf.style.display = 'none';
+        if (hf) hf.hidden = true;
 
         // 2) Reset Select2 (jika ada)
         if (typeof $ !== 'undefined' && $.fn && $.fn.select2) {
